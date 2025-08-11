@@ -1,4 +1,4 @@
-# gpt-oss-test
+# llm-rag-test
 
 ## how to install
 
