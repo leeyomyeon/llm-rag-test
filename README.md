@@ -8,7 +8,7 @@ Python version=>3.11
 LMStudio
 https://lmstudio.ai/docs/app/basics/download-model
 
-LMStudio에서 LLM 모델 받기
+LM Studio에서 LLM 모델 받기
 
 pip install OpenAI
 pip install lmstudio
