@@ -69,13 +69,13 @@ print(result.choices[0].message.content)
 react redux-saga + react-bootstrap
 npm install
 
-react-hoo-form 공식문서
+* react-hoo-form 공식문서
 https://react-hook-form.com/docs
 
-react-bootstrap 공식문서
+* react-bootstrap 공식문서
 https://react-bootstrap.github.io/docs/getting-started/introduction
 
-web server start
+* web server start
 cd front-page
 npm run start
 ```
