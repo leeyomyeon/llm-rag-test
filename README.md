@@ -64,3 +64,18 @@ print(result.choices[0].message.content)
 콘솔 창에는 아래와 같이 질문에 대한 답변이 정상적으로 출력됩니다
 <img width="923" height="484" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/a6943045-0c19-4acc-b535-3437e1f8d0cf" />
 
+## Front-End
+```
+react redux-saga + react-bootstrap
+npm install
+
+react-hoo-form 공식문서
+https://react-hook-form.com/docs
+
+react-bootstrap 공식문서
+https://react-bootstrap.github.io/docs/getting-started/introduction
+
+web server start
+cd front-page
+npm run start
+```

@@ -1,7 +1,7 @@
+# LLM + RAG
 from openai import OpenAI
 from collections import deque
 from rag import create_collection
-
 
 class Message_manager:
   def __init__(self):
@@ -61,9 +61,7 @@ def generate_answer(user_input, retrieved_docs):
 
 msgManager = Message_manager()
 msgManager.system_msg(
-  "가장 마지막 'user'의 'content'에 대해 답변한다."
-  "질문에 답할 때는 'system' 메시지 중 '문서 내용'에 명시된 부분을 우선 참고하여 정확히 답한다."
-  "개행은 문장이 끝날때와 서로 다른 주제나 항목을 구분할 때 사용하며, 불필요한 개행은 넣지 않는다."
+  "user'의 'content'에 대해 상세히 답변한다."
 )
 
 embedder, collection = create_collection()
