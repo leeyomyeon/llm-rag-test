@@ -69,7 +69,7 @@ print(result.choices[0].message.content)
 react redux-saga + react-bootstrap
 npm install
 
-* react-hoo-form 공식문서
+* react-hook-form 공식문서
 https://react-hook-form.com/docs
 
 * react-bootstrap 공식문서
@@ -78,4 +78,29 @@ https://react-bootstrap.github.io/docs/getting-started/introduction
 * web server start
 cd front-page
 npm run start
+```
+
+## Back-End Server 붙이기
+
+위에 만들었던 LLM을 부르는 파이썬 코드를 Flask 서버로 변경합니다.
+```
+pip install flask
+```
+
+터미널 경로를 모델이 있는 파일 경로로 옮깁니다
+```
+cd ai-model-server/llm_rag
+```
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+  return "Welcome to the AI Model Server!"
+
+if __name__ == '__main__':
+  app.run(debug=True)
 ```

@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormGroup, FormLabel, FormControl, Row, Col } from 'react-bootstrap';
 
-const FormInput = ({id, label, horizontal = false, labelSize = 2, useForm, ...props}) => {
+const FormInput = ({id, label, horizontal = false, labelSize = 2, useForm, keyDown = false, ...props}) => {
   const onKeyDown = (e) => {
-    if(e.key === 'Enter') {
+    if(e.key === 'Enter' && keyDown) {
       e.preventDefault();
     }
   }

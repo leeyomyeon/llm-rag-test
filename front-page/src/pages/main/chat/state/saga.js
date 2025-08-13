@@ -2,7 +2,7 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import { actions } from '.';
 
 function* fetchInitialInfo() {
-  yield put(actions.setValue('number', 1));
+  yield put(actions.setInitialInfo());
 }
 
 export function* watchUnsplash() {

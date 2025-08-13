@@ -1,5 +1,5 @@
-import rootReducerTest1 from 'pages/test1/state/rootReducer';
+import rootReducerMain from 'pages/main/state/rootReducer';
 
 export const rootReducer = {
-  test1: rootReducerTest1,
+  main: rootReducerMain,
 };

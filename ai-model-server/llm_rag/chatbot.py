@@ -1,12 +1,10 @@
 # LLM + RAG
 from openai import OpenAI
-from collections import deque
 from rag import create_collection
 
 class Message_manager:
   def __init__(self):
     self._system_msg = {"role": "system", "content": ""}
-    self.queue = deque(maxlen=10)  # 최대 10개 대화 저장
 
   def create_msg(self, role, content):
     return {"role": role, "content": content}
@@ -66,12 +64,18 @@ msgManager.system_msg(
 
 embedder, collection = create_collection()
 
-while True:
-  user_input = input("질문을 입력하세요: ")
-  if user_input == 'exit':
-    print("프로그램을 종료합니다.")
-    break
+# while True:
+#   user_input = input("질문을 입력하세요: ")
+#   if user_input == 'exit':
+#     print("프로그램을 종료합니다.")
+#     break
   
+#   retrieved_docs = retrieve_docs(user_input, collection, embedder, top_k=2)
+#   answer = generate_answer(user_input, retrieved_docs)
+#   print(answer)
+
+def get_chat_message(user_input):
   retrieved_docs = retrieve_docs(user_input, collection, embedder, top_k=2)
   answer = generate_answer(user_input, retrieved_docs)
-  print(answer)
+  
+  return answer

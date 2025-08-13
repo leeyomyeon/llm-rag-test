@@ -1,23 +1,22 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
 
-const ROOT_SLICE_NAME = 'test1';
-const SLICE_NAME = 'counter';
+const ROOT_SLICE_NAME = 'main';
+const SLICE_NAME = 'chat';
 
 const initialState = {
-  onload: false,
   number: 0,
 }
 
 const sagaAction = {
-  fetchInitialInfo: createAction(`${SLICE_NAME}/fetchInitialInfo`),
-  getList: createAction(`${SLICE_NAME}/getList`),
+  fetchInitialInfo : createAction(`${SLICE_NAME}/fetchInitialInfo`),
+  increase : createAction(`${SLICE_NAME}/increase`),
+  decrease : createAction(`${SLICE_NAME}/decrease`),
 };
 
 const reducers = {
   initState: () => initialState,
   setInitialInfo: (state) => {
     state.onload = true;
-    state.number = 1;
   },
   setValue: {
     reducer: (state, { payload : { key, value }}) => {
@@ -27,11 +26,11 @@ const reducers = {
       return { payload : {key, value} };
     }
   },
-  increase: (state, { payload : { data } }) => {
-    state.number += data;
+  increase: (state, { payload }) => {
+    state.number += payload;
   },
-  decrease: (state, { payload : { data } }) => {
-    state.number -= data;
+  decrease: (state, { payload }) => {
+    state.number -= payload;
   }
 }
 
