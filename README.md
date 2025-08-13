@@ -85,6 +85,7 @@ npm run start
 위에 만들었던 LLM을 부르는 파이썬 코드를 Flask 서버로 변경합니다.
 ```
 pip install flask
+pip install flask-cors
 ```
 
 터미널 경로를 모델이 있는 파일 경로로 옮깁니다
@@ -104,3 +105,4 @@ def home():
 if __name__ == '__main__':
   app.run(debug=True)
 ```
+위 코드는 Flask 서버를 동작시킬 수 있는 기본 코드입니다.

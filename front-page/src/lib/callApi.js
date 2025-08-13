@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-export default async function callApi({
+export default function callApi({
   url,
-  method = 'get',
+  method = 'POST',
   params,
   data,
   isLoading = true
 }) {
-  const response = await axios({
+  let baseUrl = 'http://127.0.0.1:5000'
+  return axios({
     method: method,
-    url: url,
+    url: `${baseUrl}${url}`,
     params,
     data,
     isLoading,
@@ -17,13 +18,20 @@ export default async function callApi({
       'Content-Type': 'application/json/charset=UTF-8',
       'Access-Control-Allow_origin': '*'
     }
+  }).then((response) => {
+    const { payload, resultCode, message } = response.data;
+    return {
+      isSuccess: true,
+      data: payload,
+      resultCode,
+      message,
+      response
+    };
+  }).catch((error) => {
+    return {
+      isSuccess: false,
+      error: error.message,
+      response: error.response
+    };
   });
-  const { payload, resultCode, message } = response.data;
-  return {
-    isSuccess: true,
-    data: payload,
-    resultCode,
-    message,
-    response
-  };
 }

@@ -12,7 +12,7 @@ const ChatPage = () => {
     dispatch(actions.fetchInitialInfo());
 
     return () => {
-      dispatch(actions.initState());
+      
     }
   }, [dispatch]);
 

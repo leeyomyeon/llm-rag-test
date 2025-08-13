@@ -4,13 +4,13 @@ const ROOT_SLICE_NAME = 'main';
 const SLICE_NAME = 'chat';
 
 const initialState = {
-  number: 0,
+  onload: false,
+  messageList : [],
 }
 
 const sagaAction = {
   fetchInitialInfo : createAction(`${SLICE_NAME}/fetchInitialInfo`),
-  increase : createAction(`${SLICE_NAME}/increase`),
-  decrease : createAction(`${SLICE_NAME}/decrease`),
+  sendMessage : createAction(`${SLICE_NAME}/sendMessage`),
 };
 
 const reducers = {
@@ -26,11 +26,11 @@ const reducers = {
       return { payload : {key, value} };
     }
   },
-  increase: (state, { payload }) => {
-    state.number += payload;
+  sendMessage : (state, { payload }) =>{
+    state.messageList.push({ type: 'user' , message: payload });
   },
-  decrease: (state, { payload }) => {
-    state.number -= payload;
+  receiveMessage : (state, { payload }) =>{
+    state.messageList.push({ type: 'chatbot', message: payload });
   }
 }
 

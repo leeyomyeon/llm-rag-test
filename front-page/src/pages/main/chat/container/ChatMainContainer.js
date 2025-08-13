@@ -1,40 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
-import FormInput from 'pages/components/FormInput';
+import { Container, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const ChatMainContainer = () => {
 
   const dispatch = useDispatch();
-  const form = useForm();
+  const { register, getValues, handleSubmit, reset } = useForm();
+  const messageList = useSelector(getState).messageList;
 
-  const onSubmit = (data) => {
-    form.reset();
+  const onSubmit = () => {
+    dispatch(actions.sendMessage(getValues('message')));
+    reset({ message: '' });
   };
+  
+  const formProps = {
+    ...register("message", { required: true }),
+  }
 
   return (
     <Container>
 
-      <Row>
-
+      <Row className="justify-content-md-center">
+        <Col xs={12} md={8}>
+          {messageList.map((msg, index) => (
+            <div key={index} className={`message ${msg.type}`}>
+              {msg.message}
+            </div>
+          ))}
+        </Col>
       </Row>
-      <Row>
-        <Form onSubmit={form.handleSubmit(onSubmit)}>
-          <Col sm={8}>
-            <FormInput
+      <Row className="justify-content-md-center">
+        <Col xs={12} md={8}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <InputGroup>
+            <Form.Control 
+              {...formProps}
               id="message"
-              useForm={form}
               placeholder="메시지를 입력하세요"
-              required
             />
-          </Col>
-          <Col sm={4}>
-            <Button variant="primary" onClick={onSubmit}>보내기</Button>
-          </Col>
-      </Form>
-        
+            <Button variant="outline-primary" type="submit">보내기</Button>
+          </InputGroup>
+          </Form>
+        </Col>
       </Row>
     </Container>
   )
