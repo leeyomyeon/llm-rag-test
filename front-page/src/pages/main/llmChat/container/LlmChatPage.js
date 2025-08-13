@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
 
-import ChatMainContainer from './ChatMainContainer';
+import LlmChatMainContainer from './LlmChatMainContainer';
 
-const ChatPage = () => {
+const LlmChatPage = () => {
   const dispatch = useDispatch();
   const onload = useSelector((state) => getState(state).onload);
   
@@ -21,7 +21,7 @@ const ChatPage = () => {
     {
       onload ? (
         <div>
-          <ChatMainContainer />
+          <LlmChatMainContainer />
         </div>
       ) : (
         <div>
@@ -34,4 +34,4 @@ const ChatPage = () => {
   )
 }
 
-export default React.memo(ChatPage);
+export default React.memo(LlmChatPage);

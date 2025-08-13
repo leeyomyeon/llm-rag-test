@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import MarkDownForm from 'pages/components/MarkDownForm';
 import styled from 'styled-components';
 
-const ChatMainContainer = () => {
+const LlmChatMainContainer = () => {
 
   const dispatch = useDispatch();
   const { register, getValues, handleSubmit, reset } = useForm();
@@ -68,7 +68,7 @@ const ChatMainContainer = () => {
     </Container>
   )
 }
-export default React.memo(ChatMainContainer);
+export default React.memo(LlmChatMainContainer);
 
 const Styled = {
   MessageField: styled.div`

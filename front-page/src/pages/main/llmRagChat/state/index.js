@@ -1,7 +1,7 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
 
 const ROOT_SLICE_NAME = 'main';
-const SLICE_NAME = 'chat';
+const SLICE_NAME = 'llmRagChat';
 
 const initialState = {
   onload: false,

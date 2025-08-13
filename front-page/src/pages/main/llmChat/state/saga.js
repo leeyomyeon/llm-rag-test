@@ -8,7 +8,7 @@ function* fetchInitialInfo() {
 
 function* sendMessage({ payload }) {
   const { isSuccess, data } = yield call(callApi, {
-    url: '/chat',
+    url: '/llmChat',
     method: 'POST',
     data: { message: payload }
   });
