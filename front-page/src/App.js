@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Routes>
+        <Routes>
         {/* exact={true}는 router가 경로값이 정확히 URL의 경로값과 일치할 때만 렌더링되도록 함  */}
         <Route exact={true} path="/" element={<Home />} />
         <Route path="/counter" element={<CounterPage />} />
