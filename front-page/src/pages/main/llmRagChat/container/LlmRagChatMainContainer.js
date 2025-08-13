@@ -11,13 +11,11 @@ const LlmRagChatMainContainer = () => {
   const dispatch = useDispatch();
   const { register, getValues, handleSubmit, reset } = useForm();
   const messageList = useSelector(getState).messageList;
-  const [isLoading, setLoading] = useState(false);
+  const isLoading = useSelector(getState).isLoading;
 
   const onSubmit = () => {
-    setLoading(true);
     dispatch(actions.sendMessage(getValues('message')));
     reset({ message: '' });
-    setLoading(false);
   };
   
   const formProps = {
@@ -27,7 +25,7 @@ const LlmRagChatMainContainer = () => {
   return (
     <Container>
 
-      <Row className="justify-content-md-center" style={{paddingBottom: '16px'}}>
+      <Row className="justify-content-lg-center" style={{paddingBottom: '16px', paddingTop: '16px'}}>
         <Col xs={12} md={8}>
           <Styled.MessageField>
             <Stack gap={3}>

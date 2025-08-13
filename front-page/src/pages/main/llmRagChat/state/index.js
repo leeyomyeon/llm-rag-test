@@ -5,6 +5,7 @@ const SLICE_NAME = 'llmRagChat';
 
 const initialState = {
   onload: false,
+  isLoading: false,
   messageList : [],
 }
 
@@ -28,9 +29,11 @@ const reducers = {
   },
   sendMessage : (state, { payload }) =>{
     state.messageList.push({ type: 'user' , message: payload });
+    state.isLoading = true;
   },
   receiveMessage : (state, { payload }) =>{
     state.messageList.push({ type: 'chatbot', message: payload });
+    state.isLoading = false;
   }
 }
 

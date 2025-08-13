@@ -15,13 +15,13 @@ const Header = () => {
             <Nav.Link as={NavLink} to="/ragChat">LLM + RAG Chatbot</Nav.Link>
             <Nav.Link as={NavLink} to="/llmChat">LLM Chatbot</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item as={NavLink} to="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="#action/3.2">
+              <NavDropdown.Item as={NavLink} to="/action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/action/3.2">
                   Another action
               </NavDropdown.Item>
-              <NavDropdown.Item as={NavLink} to="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="/action/3.3">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={NavLink} to="#action/3.4">
+              <NavDropdown.Item as={NavLink} to="/action/3.4">
                   Separated link
               </NavDropdown.Item>
             </NavDropdown>
