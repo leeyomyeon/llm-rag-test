@@ -1,4 +1,4 @@
-# llm-rag-test
+# [OpenAI/LM Studio] LLM + RAG를 이용해 웹 챗봇 어플리케이션 만들기
 
 ## how to install
 
