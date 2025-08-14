@@ -106,3 +106,30 @@ if __name__ == '__main__':
   app.run(debug=True)
 ```
 위 코드는 Flask 서버를 동작시킬 수 있는 기본 코드입니다.
+
+```
+@app.route('/chatbot', methods=['GET', 'POST'])
+def chatbot():
+  if request.method == 'POST':
+    data = decode_request(request)
+    return get_chat_message(data['message'])
+```
+위와 같은 방법으로 라우트를 지정하면 http://localhost:5000/chatBot 으로 서버에 접근할 수 있습니다.
+
+서버를 동작시킬땐 
+```
+python main_server.py
+```
+명령어를 입력합니다.
+
+<img width="1027" height="379" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/4ef8b129-7648-41b8-888e-5b0761d58f50" />
+RESTful API 테스트 도구로 테스트를 해보면 정상적으로 응답이 옵니다.
+
+미리 만들어 둔 웹 서버를 연결하고 테스트를 해봅니다.
+
+<img width="1163" height="936" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/70a7d39b-7021-4cff-89a4-236e790feb1c" />
+
+
+
+
+
