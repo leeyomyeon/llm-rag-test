@@ -114,14 +114,17 @@ def create_collection():
 
 ## Front-End
 ```
-react redux-saga + react-bootstrap
-npm install
-
-* react-hook-form 공식문서
-https://react-hook-form.com/docs
+react + redux-saga 기반
+UI : react-bootstrap
+Form 관리 : react-hook-form
 
 * react-bootstrap 공식문서
 https://react-bootstrap.github.io/docs/getting-started/introduction
+* react-hook-form 공식문서
+https://react-hook-form.com/docs
+
+* 패키지 설치
+npm install
 
 * web server start
 cd front-page
@@ -171,7 +174,7 @@ python main_server.py
 명령어를 입력합니다.
 
 <img width="1027" height="379" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/4ef8b129-7648-41b8-888e-5b0761d58f50" />
-RESTful API 테스트 도구로 테스트를 해보면 정상적으로 응답이 옵니다.
+API 테스트 도구로 테스트를 해보면 정상적으로 응답이 옵니다.
 
 미리 만들어 둔 웹 서버를 연결하고 테스트를 해봅니다.
 
