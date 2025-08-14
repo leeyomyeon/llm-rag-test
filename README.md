@@ -5,10 +5,9 @@
 ```
 Python version=>3.11
 
-LMStudio
+* LMStudio
 https://lmstudio.ai/docs/app/basics/download-model
-
-LM Studio에서 LLM 모델 받기
+- LM Studio에서 LLM 모델 받기
 
 pip install OpenAI
 pip install lmstudio
@@ -16,12 +15,11 @@ pip install lmstudio
 * cudart64_110.dll 에러 발생 시 CUDA Toolkit 설치
 https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_network
 
-LLM + RAG 구현(ChromaDB + llama)
+* LLM + RAG 작업 시 필요한 패키지 설치(ChromaDB + llama-index)
 pip install openai llama-index llama-index-vector-stores-chroma
 pip install pymupdf4llm sentence-transformers chromadb ollama langchain
-
-
 ```
+
 LM Studio를 설치하고 시작합니다
 <img width="1200" height="760" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/cf90ef50-cfad-4b2d-948c-a6fd5933272a" />
 위와 같은 창이 뜨는데 여기서 필요한 모델을 다운받습니다. 컴퓨터 사양에 맞춰 최적의 모델을 선택해주기도 합니다.
@@ -63,6 +61,56 @@ print(result.choices[0].message.content)
 
 콘솔 창에는 아래와 같이 질문에 대한 답변이 정상적으로 출력됩니다
 <img width="923" height="484" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/a6943045-0c19-4acc-b535-3437e1f8d0cf" />
+
+## LLM + RAG 구현(ChromaDB + llama)
+
+pymupdf4llm은 python에서 pdf파일을 llm에 쓰기 쉽게 하기 위한 파싱 도구입니다.
+langchain의 text_splitter를 이용해 텍스트를 청크단위로 쪼개줍니다.
+```python
+import pymupdf4llm
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+def load_pdf(file_path):
+  pdf_data = pymupdf4llm.to_markdown(file_path)
+  text = "".join(pdf_data)
+  print("pdf 파일 업로드 중...")
+  return text
+
+def split_text(text):
+  text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
+  return text_splitter.split_text(text)
+```
+pdf문서를 텍스트화하여 chromadb에 저장합니다.
+```python
+from sentence_transformers import SentenceTransformer
+import chromadb
+from util import load_pdf, split_text
+
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(BASE_DIR, "docs", "sample.pdf")
+print(file_path)
+def create_collection():
+  client = chromadb.PersistentClient(path="./chroma_db")
+  embedder = SentenceTransformer("intfloat/multilingual-e5-small")
+  collection = client.get_or_create_collection(name="rag_collection",  metadata={"hnsw:space": "cosine"} )
+
+  print("문서 로드 및 임베딩 시작...")
+  raw_text = load_pdf(file_path)
+  chunks = split_text(raw_text)
+  embeddings = embedder.encode(chunks, convert_to_tensor=False)
+
+  for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
+    collection.add(
+      ids=[f"chunk_{i + 1}"],
+      embeddings=[embedding.tolist()],
+      metadatas=[{"text": chunk}],
+    )
+  
+  return embedder, collection
+```
+정수기 사용설명서를 넣고 정수기 주의사항을 질문했습니다.
+<img width="740" height="312" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/8f71c608-fc45-462f-9156-731d11a888d3" />
 
 ## Front-End
 ```
