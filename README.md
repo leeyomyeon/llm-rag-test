@@ -37,6 +37,7 @@ LM Studio를 설치하고 시작합니다
 그리고 서버를 작동시키면 READY와 함께 로컬에서 접속가능한 주소가 나옵니다.
 <img width="1062" height="495" alt="img1 daumcdn" src="https://github.com/user-attachments/assets/5f2101fa-acee-4f9c-a464-ea190c3c96c4" />
 
+파이썬 파일을 하나 만들어서 모델 서버를 불러보겠습니다.
 ```python
 from openai import OpenAI
 
