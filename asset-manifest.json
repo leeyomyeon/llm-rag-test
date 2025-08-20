@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/llm-rag-test/static/css/main.e37f1b9f.css",
-    "main.js": "/llm-rag-test/static/js/main.e188ebc9.js",
+    "main.js": "/llm-rag-test/static/js/main.4fdfd074.js",
     "index.html": "/llm-rag-test/index.html",
     "main.e37f1b9f.css.map": "/llm-rag-test/static/css/main.e37f1b9f.css.map",
-    "main.e188ebc9.js.map": "/llm-rag-test/static/js/main.e188ebc9.js.map"
+    "main.4fdfd074.js.map": "/llm-rag-test/static/js/main.4fdfd074.js.map"
   },
   "entrypoints": [
     "static/css/main.e37f1b9f.css",
-    "static/js/main.e188ebc9.js"
+    "static/js/main.4fdfd074.js"
   ]
 }
