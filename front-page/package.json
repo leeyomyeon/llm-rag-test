@@ -8,6 +8,7 @@
     "bootstrap": "^5.3.7",
     "cra-template-redux": "2.0.0",
     "eslint-config-react-app": "^7.0.1",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
@@ -28,8 +29,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://leeyomyeon.github.io/llm-rag-test/",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -5,7 +5,7 @@ from llm import get_llm_chat_message
 
 import json
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000", "http://10.122.118.201:3000"])  # CORS 설정
+CORS(app, origins=["http://localhost:3000", "http://10.122.118.201:3000", "https://leeyomyeon.github.io/"])  # CORS 설정
 
 class ResponseData :
   def __init__(self):
