@@ -16,7 +16,7 @@ function App() {
       <Header />
         <Routes>
         {/* exact={true}는 router가 경로값이 정확히 URL의 경로값과 일치할 때만 렌더링되도록 함  */}
-        <Route exact={true} path={`${path}`} element={<Home />} />
+        <Route exact={true} path={`${path}/home`} element={<Home />} />
         <Route path={`${path}/counter`} element={<CounterPage />} />
         <Route path={`${path}/ragChat`} element={<LlmRagChatPage />} />
         <Route path={`${path}/llmChat`} element={<LlmChatPage />} />
