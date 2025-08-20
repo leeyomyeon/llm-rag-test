@@ -184,4 +184,8 @@ API 테스트 도구로 테스트를 해보면 정상적으로 응답이 옵니�
 
 
 ## github-pages로 배포
-url : https://leeyomyeon.github.io/llm-rag-test/
+url : https://leeyomyeon.github.io/llm-rag-test/home
+```
+npm run build
+npm run deploy
+```
