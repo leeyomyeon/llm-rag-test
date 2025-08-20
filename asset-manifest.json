@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/llm-rag-test/static/css/main.e37f1b9f.css",
-    "main.js": "/llm-rag-test/static/js/main.d577efe5.js",
+    "main.js": "/llm-rag-test/static/js/main.22e24ecd.js",
+    "static/media/logo.svg": "/llm-rag-test/static/media/logo.bfc9a1cd90b5365fd3b770c6bd4d910f.svg",
     "index.html": "/llm-rag-test/index.html",
     "main.e37f1b9f.css.map": "/llm-rag-test/static/css/main.e37f1b9f.css.map",
-    "main.d577efe5.js.map": "/llm-rag-test/static/js/main.d577efe5.js.map"
+    "main.22e24ecd.js.map": "/llm-rag-test/static/js/main.22e24ecd.js.map"
   },
   "entrypoints": [
     "static/css/main.e37f1b9f.css",
-    "static/js/main.d577efe5.js"
+    "static/js/main.22e24ecd.js"
   ]
 }
