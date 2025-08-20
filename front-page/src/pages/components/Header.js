@@ -15,7 +15,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={NavLink} to={`${path}/home`}>Home</Nav.Link>
+              <Nav.Link as={NavLink} to={`${path}/`} end>Home</Nav.Link>
               <Nav.Link as={NavLink} to={`${path}/counter`}>Sample Page</Nav.Link>
               <Nav.Link as={NavLink} to={`${path}/ragChat`}>LLM + RAG Chatbot</Nav.Link>
               <Nav.Link as={NavLink} to={`${path}/llmChat`}>LLM Chatbot</Nav.Link>
