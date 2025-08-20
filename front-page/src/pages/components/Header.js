@@ -2,6 +2,8 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown, Image }from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import logo from './image/logo.svg';
+import './Header.css';
+
 const path = "/llm-rag-test"
 
 const Header = () => {

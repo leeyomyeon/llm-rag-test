@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Apple SD Gothic Neo';
+  src: url('../../fonts/AppleSDGothicNeo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+.navbar,
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-item {
+  font-family: 'Apple SD Gothic Neo', Arial, sans-serif !important;
+  font-weight: 600 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #f8fafc 0%, #e0e7ef 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border-bottom: none;
+}
+
+.navbar-brand img {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+}
+
+.navbar .navbar-toggler {
+  border: none;
+}
+
+.navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 2px #1976d2;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.nav-tabs,
+.navbar-nav {
+  border-bottom: none;
+}
+
+.navbar-nav .nav-link {
+  color: #495057;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  margin-right: 20px;
+  padding: 12px 28px 10px 28px;
+  background: transparent;
+  transition: 
+    color 0.18s cubic-bezier(.4,0,.2,1),
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1);
+  line-height: 1.5;
+  position: relative;
+  top: 0;
+  box-shadow: none;
+  outline: none;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link.active {
+  color: #1976d2;
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.5);
+  z-index: 2;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.navbar-nav .nav-link:hover:not(.active),
+.navbar-nav .nav-link:focus:not(.active) {
+  color: #fff;
+  background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%);
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.10);
+  z-index: 1;
+  text-decoration: none;
+  transition: 
+    color 0.18s cubic-bezier(.4,0,.2,1),
+    background 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1);
+}
+
+.navbar-nav .dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border: none;
+  margin-top: 8px;
+  min-width: 180px;
+  font-size: 1rem;
+}
+
+.navbar-nav .dropdown-item {
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar-nav .dropdown-item.active, 
+.navbar-nav .dropdown-item:active {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.navbar-nav .dropdown-item:hover, 
+.navbar-nav .dropdown-item:focus {
+  background: #f1f8fe;
+  color: #1565c0;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav .nav-link {
+    margin-right: 0;
+    margin-bottom: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+}

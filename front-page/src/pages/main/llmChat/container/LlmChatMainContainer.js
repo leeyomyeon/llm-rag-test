@@ -24,8 +24,7 @@ const LlmChatMainContainer = () => {
 
   return (
     <Container>
-
-      <Row className="justify-content-md-center" style={{paddingBottom: '16px', paddingTop: '16px'}}>
+      <Row className="justify-content-md-center" style={{ paddingTop: '16px' }}>
         <Col xs={12} md={8}>
           <Styled.MessageField>
             <Stack gap={3}>
@@ -42,7 +41,7 @@ const LlmChatMainContainer = () => {
         </Styled.MessageField>
         </Col>
       </Row>
-      <Row className="justify-content-md-center" style={{paddingBottom: '16px'}}>
+      <Row className="justify-content-md-center" style={{ paddingBottom: '16px' }}>
         <Col xs={12} md={8}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
