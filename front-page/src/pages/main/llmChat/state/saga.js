@@ -14,6 +14,8 @@ function* sendMessage({ payload }) {
   });
   if (isSuccess && data) {
     yield put(actions.receiveMessage(data.message));
+  } else {
+    yield put(actions.receiveMessage('에러가 발생했습니다. 관리자에게 문의하세요.'));
   }
 }
 export function* watchUnsplash() {

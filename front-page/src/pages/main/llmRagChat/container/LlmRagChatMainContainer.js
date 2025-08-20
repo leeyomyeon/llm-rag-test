@@ -24,7 +24,6 @@ const LlmRagChatMainContainer = () => {
 
   return (
     <Container>
-
       <Row className="justify-content-lg-center" style={{paddingBottom: '16px', paddingTop: '16px'}}>
         <Col xs={12} md={8}>
           <Styled.MessageField>
