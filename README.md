@@ -130,6 +130,9 @@ npm install
 * web server start
 cd front-page
 npm run start
+
+* react-scripts 관련 오류
+npm install -g react-scripts
 ```
 
 ## Back-End Server 붙이기

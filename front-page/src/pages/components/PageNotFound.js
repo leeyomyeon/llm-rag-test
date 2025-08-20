@@ -56,7 +56,7 @@ useEffect(() => {
   return (
     <NotFoundWrapper>
       <NotFoundBox>
-        <Big404>404</Big404>
+        <Big404>404 - Page Not Found</Big404>
         <Message>
           페이지를 찾을 수 없습니다.<br />
           3초 뒤 메인 페이지로 이동합니다.
