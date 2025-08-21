@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { Nav } from 'react-bootstrap';
-const Background = styled.div`
-  min-height: 70vh;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+
+const HomeWrapper = styled.div`
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +47,7 @@ const StyledButton = styled(Button)`
 
 const Home = () => {
   return (
-    <Background>
+    <HomeWrapper>
       <Container>
         <Row className="justify-content-center">
           <Col xs={12} md={8} className="text-center">
@@ -63,7 +62,7 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-    </Background>
+    </HomeWrapper>
   );
 };
 

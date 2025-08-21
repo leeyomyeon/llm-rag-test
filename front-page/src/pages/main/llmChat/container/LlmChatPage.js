@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
-
 import LlmChatMainContainer from './LlmChatMainContainer';
 
 const LlmChatPage = () => {
@@ -20,9 +19,7 @@ const LlmChatPage = () => {
     <>
     {
       onload ? (
-        <div>
-          <LlmChatMainContainer />
-        </div>
+        <LlmChatMainContainer />
       ) : (
         <div>
           로딩 중...

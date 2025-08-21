@@ -69,8 +69,10 @@ export default React.memo(LlmChatMainContainer);
 
 const Styled = {
   MessageField: styled.div`
-    min-height: 800px;
-    max-height: 800px;
+    width: 100%;
+    height: 100vh;
+    min-height: 300px;
+    max-height: 80vh;
     background: #fafbfc;
     border: 1px solid #eee;
     border-radius: 8px;

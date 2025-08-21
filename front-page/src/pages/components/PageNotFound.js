@@ -8,7 +8,6 @@ const NotFoundWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
 `;
 
 const NotFoundBox = styled.div`
@@ -25,8 +24,14 @@ const Big404 = styled.div`
   font-size: 4rem;
   font-weight: 900;
   color: #6366f1;
-  margin-bottom: 12px;
   letter-spacing: -2px;
+`;
+const Small404 = styled.div`
+  font-size: 2rem;
+  font-weight: 900;
+  color: #6366f1;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
 `;
 
 const Message = styled.div`
@@ -44,7 +49,7 @@ useEffect(() => {
     setProgress((prev) => {
       if (prev >= 100) {
         clearInterval(timer);
-        navigate('/llm-rag-test/home');
+        navigate('/llm-rag-test/');
         return prev;
       }
       return prev + 1;
@@ -56,7 +61,8 @@ useEffect(() => {
   return (
     <NotFoundWrapper>
       <NotFoundBox>
-        <Big404>404 - Page Not Found</Big404>
+        <Big404>404</Big404>
+        <Small404>Page Not Found</Small404>
         <Message>
           페이지를 찾을 수 없습니다.<br />
           3초 뒤 메인 페이지로 이동합니다.

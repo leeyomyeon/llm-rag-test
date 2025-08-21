@@ -22,21 +22,19 @@ const CounterPage = () => {
     <>
       {
         onload && (
-          <div>
-            <Container>
-              <Row>
-                <Col sm={8}>
-                  <CounterGrid />
-                </Col>
-                <Col sm={4}>
-                  <CounterCarousel />
-                </Col>
-              </Row>
-              <Row>
-                <CounterApiGrid />
-              </Row>
-            </Container>
-          </div>
+          <Container>
+            <Row>
+              <Col sm={8}>
+                <CounterGrid />
+              </Col>
+              <Col sm={4}>
+                <CounterCarousel />
+              </Col>
+            </Row>
+            <Row>
+              <CounterApiGrid />
+            </Row>
+          </Container>
         )
       }
     </>

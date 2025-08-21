@@ -24,7 +24,7 @@ const LlmRagChatMainContainer = () => {
 
   return (
     <Container>
-      <Row className="justify-content-lg-center" style={{ paddingTop: '16px' }}>
+      <Row className="justify-content-center" style={{ paddingTop: '16px' }}>
         <Col xs={12} md={8}>
           <Styled.MessageField>
             <Stack gap={3}>
@@ -41,7 +41,7 @@ const LlmRagChatMainContainer = () => {
         </Styled.MessageField>
         </Col>
       </Row>
-      <Row className="justify-content-md-center" style={{ paddingBottom: '16px' }}>
+      <Row className="justify-content-center" style={{ paddingBottom: '16px' }}>
         <Col xs={12} md={8}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
@@ -69,8 +69,10 @@ export default React.memo(LlmRagChatMainContainer);
 
 const Styled = {
   MessageField: styled.div`
-    min-height: 800px;
-    max-height: 800px;
+    width: 100%;
+    height: 100vh;
+    min-height: 300px;
+    max-height: 80vh;
     background: #fafbfc;
     border: 1px solid #eee;
     border-radius: 8px;
