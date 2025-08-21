@@ -1,1 +1,3 @@
 */node_modules
+ai-model-server/llm_rag/__pycache__/
+ai-model-server/llm_rag/chroma_db/
