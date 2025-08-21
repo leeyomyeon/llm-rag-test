@@ -18,6 +18,9 @@ https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64
 * LLM + RAG 작업 시 필요한 패키지 설치(ChromaDB + llama-index)
 pip install openai llama-index llama-index-vector-stores-chroma
 pip install pymupdf4llm sentence-transformers chromadb ollama langchain
+
+* Microsoft Visual C++ 런타임 라이브러리 설치
+https://learn.microsoft.com/ko-kr/cpp/windows/latest-supported-vc-redist?view=msvc-170
 ```
 
 LM Studio를 설치하고 시작합니다
