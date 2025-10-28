@@ -7,7 +7,7 @@ export default function callApi({
   data,
   isLoading = true
 }) {
-  let baseUrl = 'http://127.0.0.1:5000'
+  let baseUrl = 'http://127.0.0.1:5000'  // backend-server api
   return axios({
     method: method,
     url: `${baseUrl}${url}`,

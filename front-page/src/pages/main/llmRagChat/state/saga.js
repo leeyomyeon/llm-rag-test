@@ -8,7 +8,7 @@ function* fetchInitialInfo() {
 
 function* sendMessage({ payload }) {
   const { isSuccess, data } = yield call(callApi, {
-    url: '/llmRagChat',
+    url: '/imageProcessChat',
     method: 'POST',
     data: { message: payload }
   });

@@ -195,3 +195,16 @@ url : https://leeyomyeon.github.io/llm-rag-test/
 npm run build
 npm run deploy
 ```
+
+## AWS Bedrock 사용
+```
+pip install boto3
+```
+image_processing 폴더 아래에 aws_access.py를 만들고 access key를 설정합니다.
+
+access_key = 'your access key'
+secret_key = 'your secret key'
+region_name = 'us-west-2'
+service_name = 'bedrock-agent-runtime'
+agent_id = 'agent id'
+agent_alias_id = 'agent alias id'

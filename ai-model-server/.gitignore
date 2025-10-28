@@ -1,2 +1,3 @@
-/llm_rag/__pycache__/
-/llm_rag/chroma_db/
+/*/__pycache__/
+/*/chroma_db/
+aws_access.py
