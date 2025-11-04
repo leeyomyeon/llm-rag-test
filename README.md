@@ -2,6 +2,8 @@
 
 ## how to install
 
+<span style="color:#FF0000"> Amazon Bedrock을 이용해서 LM Studio는 설치하지 않으셔도 됩니다. </span>
+
 ```
 Python version=>3.11
 
