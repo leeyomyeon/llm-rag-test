@@ -21,6 +21,7 @@ const Header = () => {
               <Nav.Link as={NavLink} to={`${path}/counter`}>Sample Page</Nav.Link>
               <Nav.Link as={NavLink} to={`${path}/ragChat`}>LLM + RAG Chatbot</Nav.Link>
               <Nav.Link as={NavLink} to={`${path}/llmChat`}>LLM Chatbot</Nav.Link>
+              <Nav.Link as={NavLink} to={`${path}/ImgComposit`}>이미지 합성</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item as={NavLink} to={`${path}/action/3.1`}>Action</NavDropdown.Item>
                 <NavDropdown.Item as={NavLink} to={`${path}/action/3.2`}>
