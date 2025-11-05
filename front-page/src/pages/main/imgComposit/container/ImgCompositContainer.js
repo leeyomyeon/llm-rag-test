@@ -145,6 +145,7 @@ const ImgCompositContainer = () => {
                         {...rect}
                         stroke="red"
                         strokeWidth={2}
+                        strokeScaleEnabled={false}
                         fill="rgba(255, 0, 0, 0.2)"
                         draggable
                         dragBoundFunc={(pos) => {
@@ -183,20 +184,34 @@ const ImgCompositContainer = () => {
                           const scaleX = node.scaleX();
                           const scaleY = node.scaleY();
 
-                          // transform 후 스케일 리셋 + 크기 반영
                           node.scaleX(1);
                           node.scaleY(1);
 
+                          let newX = node.x();
+                          let newY = node.y();
+                          let newWidth = Math.max(5, node.width() * scaleX);
+                          let newHeight = Math.max(5, node.height() * scaleY);
+
+                          // 이미지 영역(stageSize) 경계 체크
+                          if (newX < 0) newX = 0;
+                          if (newY < 0) newY = 0;
+                          if (newX + newWidth > stageSize.width) {
+                            newWidth = stageSize.width - newX;
+                          }
+                          if (newY + newHeight > stageSize.height) {
+                            newHeight = stageSize.height - newY;
+                          }
+
                           setRect({
                             ...rect,
-                            x: node.x(),
-                            y: node.y(),
-                            width: Math.max(5, node.width() * scaleX),
-                            height: Math.max(5, node.height() * scaleY),
+                            x: newX,
+                            y: newY,
+                            width: newWidth,
+                            height: newHeight,
                           });
                         }}
                       />
-                      <Transformer ref={trRef} />
+                      <Transformer ref={trRef} keepRatio={false} />
                     </>
                   )}
                   </>
@@ -282,66 +297,3 @@ const ImgCompositContainer = () => {
   )
 }
 export default React.memo(ImgCompositContainer);
-
-const Styled = {
-  MessageField: styled.div`
-    width: 100%;
-    height: 100vh;
-    min-height: 300px;
-    max-height: 80vh;
-    background: #fafbfc;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 24px 12px 32px 12px;
-    margin-bottom: 10px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    .message-chatbot, .message-user {
-      display: inline-block;
-      max-width: 75%;
-      word-break: break-word;
-      padding: 12px 18px;
-      border-radius: 18px;
-      font-size: 1rem;
-      margin-bottom: 4px;
-      position: relative;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-
-    .message-chatbot {
-      align-self: flex-start;
-      background: #f1f0f0;
-      color: #222;
-      border-bottom-left-radius: 4px;
-      &::before {
-        content: "";
-        position: absolute;
-        left: -10px;
-        top: 16px;
-        border-width: 8px 10px 8px 0;
-        border-style: solid;
-        border-color: transparent #f1f0f0 transparent transparent;
-      }
-    }
-
-    .message-user {
-      align-self: flex-end;
-      background: #d1e7dd;
-      color: #222;
-      border-bottom-right-radius: 4px;
-      text-align: right;
-      &::before {
-        content: "";
-        position: absolute;
-        right: -10px;
-        top: 16px;
-        border-width: 8px 0 8px 10px;
-        border-style: solid;
-        border-color: transparent transparent transparent #d1e7dd;
-      }
-    }
-  `
-}
