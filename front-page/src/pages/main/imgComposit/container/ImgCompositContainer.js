@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, getState } from '../state';
-import { Container, Row, Col, Button, Form, InputGroup, Stack } from 'react-bootstrap';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { Stage, Layer, Image as KonvaImage, Rect, Transformer } from "react-konva";
 import useImage from 'use-image';
 import { useForm } from 'react-hook-form';
@@ -12,8 +12,8 @@ import targetImage from '../testImage/image2.png';
 const ImgCompositContainer = () => {
 
   const dispatch = useDispatch();
-  const isLoading = useSelector(getState).isLoading;
-  const rsltImage = useSelector(getState).rsltImage;
+  const isLoading = useSelector((state) => getState(state)).isLoading;
+  const rsltImage = useSelector((state) => getState(state)).rsltImage;
   const { register, getValues, handleSubmit, reset } = useForm();
   const [imageUrl, setImageUrl] = useState(null);
   const [imageUrl2, setImageUrl2] = useState(null);
@@ -61,10 +61,16 @@ const ImgCompositContainer = () => {
   const formProps = {
     ...register("message", { required: true }),
   }
-  const handleUpload = (e) => {
+  const backgroundImgUpload = (e) => {
     const file = e.target.files[0];
     if(file) {
       setImageUrl(URL.createObjectURL(file));
+    }
+  }
+  const prdtImgUpload = (e) => {
+    const file = e.target.files[0];
+    if(file) {
+      setImageUrl2(URL.createObjectURL(file));
     }
   }
 // 드래그로 새 마스크 생성
@@ -98,152 +104,151 @@ const ImgCompositContainer = () => {
 
   const handleMouseUp = () => setIsDrawing(false);
 
-  // 마스크 삭제
-  const clearRect = () => setRect(null);
-
   return (
     <Container fluid style={{ paddingTop: '8px' }}>
       <Row className="justify-content-md-center" style={{ paddingBottom: '8px' }}>
         <Col xs={6} md={4}>
           <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>배경 업로드</Form.Label>
-            <Form.Control type="file" accept="image/*" onChange={handleUpload} />
+            <Form.Control type="file" accept="image/*" onChange={backgroundImgUpload} />
           </Form.Group>
         </Col>
         <Col xs={6} md={4}>
           <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>제품 이미지 업로드</Form.Label>
-            <Form.Control type="file" accept="image/*" onChange={handleUpload} />
+            <Form.Control type="file" accept="image/*" onChange={prdtImgUpload} />
           </Form.Group>
         </Col>
-
       </Row>
       <Row className="justify-content-md-center" style={{ paddingBottom: '8px' }}>
         <Col xs={6} md={4}>
-          {
-            imageUrl && (
-              <>
-                <Stage
-                  width={stageSize.width}
-                  height={stageSize.height}
-                  onMouseDown={handleMouseDown}
-                  onMouseMove={handleMouseMove}
-                  onMouseUp={handleMouseUp}
-                  style={{
-                    border: "1px solid #ddd",
-                    margin: "auto",
-                    cursor: rect ? "default" : "crosshair",
-                  }}
-                >
-                  <Layer>
-                    <KonvaImage image={image} width={600} height={400} />
-                    {rect && (
-                      <>
-                        <Rect
-                          ref={rectRef}
-                          {...rect}
-                          stroke="red"
-                          strokeWidth={2}
-                          fill="rgba(255, 0, 0, 0.2)"
-                          draggable
-                          dragBoundFunc={(pos) => {
-                            // 이동 시 이미지 영역 밖으로 못 나가게 제한
-                            const node = rectRef.current;
-                            const box = {
-                              width: node.width(),
-                              height: node.height(),
-                            };
+          <Stage
+            width={stageSize.width}
+            height={stageSize.height}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            style={{
+              border: "1px solid #ddd",
+              margin: "auto",
+              cursor: rect ? "default" : "crosshair",
+            }}
+          >
+            <Layer>
+              {imageUrl && (
+                <>
+                  <KonvaImage image={image} width={600} height={400} />
+                  {rect && (
+                    <>
+                      <Rect
+                        ref={rectRef}
+                        {...rect}
+                        stroke="red"
+                        strokeWidth={2}
+                        fill="rgba(255, 0, 0, 0.2)"
+                        draggable
+                        dragBoundFunc={(pos) => {
+                          // 이동 시 이미지 영역 밖으로 못 나가게 제한
+                          const node = rectRef.current;
+                          const box = {
+                            width: node.width(),
+                            height: node.height(),
+                          };
 
-                            let newX = pos.x;
-                            let newY = pos.y;
+                          let newX = pos.x;
+                          let newY = pos.y;
 
-                            // 왼쪽/위쪽 경계
-                            if (newX < 0) newX = 0;
-                            if (newY < 0) newY = 0;
+                          // 왼쪽/위쪽 경계
+                          if (newX < 0) newX = 0;
+                          if (newY < 0) newY = 0;
 
-                            // 오른쪽/아래쪽 경계
-                            if (newX + box.width > stageSize.width)
-                              newX = stageSize.width - box.width;
-                            if (newY + box.height > stageSize.height)
-                              newY = stageSize.height - box.height;
+                          // 오른쪽/아래쪽 경계
+                          if (newX + box.width > stageSize.width)
+                            newX = stageSize.width - box.width;
+                          if (newY + box.height > stageSize.height)
+                            newY = stageSize.height - box.height;
 
-                            return { x: newX, y: newY };
-                          }}
-                          onDragEnd={(e) => {
-                            const node = e.target;
-                            setRect({
-                              ...rect,
-                              x: node.x(),
-                              y: node.y(),
-                            });
-                          }}
-                          onTransformEnd={(e) => {
-                            const node = rectRef.current;
-                            const scaleX = node.scaleX();
-                            const scaleY = node.scaleY();
+                          return { x: newX, y: newY };
+                        }}
+                        onDragEnd={(e) => {
+                          const node = e.target;
+                          setRect({
+                            ...rect,
+                            x: node.x(),
+                            y: node.y(),
+                          });
+                        }}
+                        onTransformEnd={(e) => {
+                          const node = rectRef.current;
+                          const scaleX = node.scaleX();
+                          const scaleY = node.scaleY();
 
-                            // transform 후 스케일 리셋 + 크기 반영
-                            node.scaleX(1);
-                            node.scaleY(1);
+                          // transform 후 스케일 리셋 + 크기 반영
+                          node.scaleX(1);
+                          node.scaleY(1);
 
-                            setRect({
-                              ...rect,
-                              x: node.x(),
-                              y: node.y(),
-                              width: Math.max(5, node.width() * scaleX),
-                              height: Math.max(5, node.height() * scaleY),
-                            });
-                          }}
-                        />
-                        <Transformer ref={trRef} />
-                      </>
-                    )}
-                  </Layer>
-                </Stage>
-                <Row className="justify-content-md-center">
-                  <Col>
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                      className="mt-3"
-                      onClick={clearRect}
-                    >
-                      마스크 지우기
-                    </Button>
-                  </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                  마우스로 드래그 해서 마스킹 영역을 그려보세요
-                </Row>
-              </>
-            )
-          }
-        </Col>
-        <Col xs={6} md={4}>
-          {
-            imageUrl2 && (
-              <>
-                <Stage
-                  width={400}
-                  height={400}
-                >
-                  <Layer>
-                    <KonvaImage image={image2} width={600} height={400} />
-                  </Layer>
-                </Stage>
-              </>
-            )
-          }
+                          setRect({
+                            ...rect,
+                            x: node.x(),
+                            y: node.y(),
+                            width: Math.max(5, node.width() * scaleX),
+                            height: Math.max(5, node.height() * scaleY),
+                          });
+                        }}
+                      />
+                      <Transformer ref={trRef} />
+                    </>
+                  )}
+                  </>
+                )
+              }
+            </Layer>
+          </Stage>
           <Row className="justify-content-md-center">
             <Col>
               <Button
-                onClick={onSubmit}
+                variant="outline-danger"
                 size="sm"
-                classname="mt-3 ms-2"
+                className="mt-3"
+                onClick={() => setRect(null)}
+              >
+                마스크 지우기
+              </Button>
+            </Col>
+          </Row>
+          <Row className="justify-content-md-center">
+            마우스로 드래그 해서 마스킹 영역을 그려보세요
+          </Row>
+        </Col>
+        <Col xs={6} md={4}>
+          <Stage
+            width={400}
+            height={400}
+            style={{
+              border: "1px solid #ddd",
+              margin: "auto",
+            }}
+          >
+            {imageUrl2 && (
+              <>
+                <Layer>
+                  <KonvaImage image={image2} width={600} height={400} />
+                </Layer>
+              </>
+            )}
+          </Stage>
+          <Row className="justify-content-md-center">
+            <Col>
+              <Button
+                size="sm"
+                className="mt-3"
+                onClick={onSubmit}
               >
                 이미지 생성
               </Button>
             </Col>
+          </Row>
+          <Row className="justify-content-md-center">
           </Row>
         </Col>
       </Row>

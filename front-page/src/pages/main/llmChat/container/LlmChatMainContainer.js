@@ -10,8 +10,8 @@ const LlmChatMainContainer = () => {
 
   const dispatch = useDispatch();
   const { register, getValues, handleSubmit, reset } = useForm();
-  const messageList = useSelector(getState).messageList;
-  const isLoading = useSelector(getState).isLoading;
+  const messageList = useSelector((state) => getState(state)).messageList;
+  const isLoading = useSelector((state) => getState(state)).isLoading;
 
   const onSubmit = () => {
     dispatch(actions.sendMessage(getValues('message')));
