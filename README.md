@@ -3,7 +3,7 @@
 ## how to install
 
 <span style="color:#FF0000"> Amazon Bedrock을 이용해서 LM Studio는 설치하지 않으셔도 됩니다. </span>
-
+소스 내 import 문이 있어서 pip install은 하셔야 됩니다.
 ```
 Python version=>3.11
 
